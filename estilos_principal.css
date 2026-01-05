@@ -1,37 +1,48 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #f8e1e9, #ffd1dc); /* Degradado romántico */
-    height: 100vh;
+    background: linear-gradient(to bottom, #f8e1e9, #ffd1dc);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: 'Annie Use Your Telescope', cursive;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 20;
+    width: 100%;
 }
 
 .card {
     position: relative;
     width: 90%;
     max-width: 520px;
-    min-height: 280px;       /* 👈 evita que colapse */
+    min-height: 280px;
     background: #fff;
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: all 0.6s ease;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card:hover {
-    transform: scale(1.02); /* Efecto hover suave */
+    transform: scale(1.02);
 }
 
 .heart {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: linear-gradient(to bottom, #ff69b4, #ff0000); /* Degradado rosa a rojo */
+    background: linear-gradient(to bottom, #ff69b4, #ff0000);
     transform: rotate(-45deg);
     transition: opacity 0.3s;
 }
@@ -46,194 +57,40 @@ body {
     border-radius: 50%;
 }
 
-.heart::before {
-    top: -50px;
-    left: 0;
-}
-
-.heart::after {
-    left: 50px;
-    top: 0;
-}
+.heart::before { top: -50px; left: 0; }
+.heart::after { left: 50px; top: 0; }
 
 .heart.broken {
     animation: breakHeart 1s forwards;
 }
 
 @keyframes breakHeart {
-    0% {
-        transform: rotate(-45deg) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: rotate(-45deg) scale(0);
-        opacity: 0;
-    }
-}
-
-.heart-particle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: url('heart.png') no-repeat center; /* Imagen local */
-    background-size: cover;
-    opacity: 1;
-    animation: disperseParticle 1s forwards;
-}
-
-@keyframes disperseParticle {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--dx), var(--dy)) scale(0.5);
-        opacity: 0;
-    }
+    0% { transform: rotate(-45deg) scale(1); opacity: 1; }
+    100% { transform: rotate(-45deg) scale(0); opacity: 0; }
 }
 
 .card-text {
     font-size: 20px;
     line-height: 1.6;
-    max-height: 60vh;
-    overflow-y: auto;
     margin-top: 40px;
 }
 
 .card-text p {
-    font-size: 2em; /* Más grande */
-    color: #ff4d4d; /* Rojo vibrante */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    font-size: 2em;
+    color: #ff4d4d;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8);
     font-family: 'Annie Use Your Telescope', cursive;
-    margin: 0;
-}
-
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.flower {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-size: cover;
-    bottom: 100vh; /* Comienza fuera de la pantalla */
-    animation: growFlower 2.5s ease-out forwards;
-    z-index: 5; /* Detrás de la carta */
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-}
-
-@keyframes growFlower {
-    0% {
-        bottom: 100vh;
-        opacity: 0;
-    }
-    100% {
-        bottom: 0; /* Parte inferior de la pantalla */
-        opacity: 1;
-    }
-}
-
-.border-flower {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    opacity: 0;
-    animation: appearFlower 1s ease-out forwards;
-    z-index: 8; /* Entre la carta y las flores que crecen */
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-}
-
-@keyframes appearFlower {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.arrow {
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: none;
-    z-index: 15;
-}
-
-.arrow svg {
-    transition: transform 0.3s, stroke 0.3s;
-}
-
-.arrow:hover svg {
-    transform: translateX(10px);
-    stroke: #ff1a1a; /* Color más vibrante al hover */
-}
-
-@media (max-width: 600px) {
-    .card {
-        width: 80vw; /* 80% del ancho de la pantalla */
-        height: 300px;
-    }
-    .heart {
-        width: 70px;
-        height: 70px;
-    }
-    .heart::before,
-    .heart::after {
-        width: 70px;
-        height: 70px;
-    }
-    .heart::before {
-        top: -35px;
-    }
-    .heart::after {
-        left: 35px;
-    }
-    .heart-particle {
-        width: 15px;
-        height: 15px;
-    }
-    .card-text p {
-        font-size: 1.5em;
-    }
-    .flower, .border-flower {
-        width: 45px;
-        height: 45px;
-    }
-    .arrow {
-        right: 15px;
-    }
-    .arrow svg {
-        width: 40px;
-        height: 40px;
-    }
+    margin: 0 0 15px 0;
 }
 
 .continue-container {
-    position: absolute;
-    bottom: 30px;       /* lo coloca debajo de la carta */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    display: flex;
-    justify-content: center;
+    display: none;
+    text-align: center;
     width: 100%;
 }
 
 .continue-btn {
-    background: #ff4d4d;   /* Rojo romántico */
+    background: #ff4d4d;
     color: #fff;
     font-family: 'Annie Use Your Telescope', cursive;
     font-size: 1.5em;
@@ -248,50 +105,12 @@ body {
     background: #e63946;
     transform: scale(1.05);
 }
-.card-container {
-    display: flex;
-    flex-direction: column; /* coloca carta arriba, botón abajo */
-    align-items: center;    /* centra horizontalmente */
-    gap: 20px;              /* espacio entre carta y botón */
-    position: relative;
-    z-index: 20;
-}
-
-.card-container {
-    display: flex;
-    flex-direction: column;  /* carta arriba, botón abajo */
-    align-items: center;     /* centrar horizontalmente */
-    gap: 20px;               /* espacio entre carta y botón */
-    position: relative;
-    z-index: 20;
-}
-
-.continue-container {
-    display: none; /* oculto hasta que se active */
-    text-align: center;
-    width: 100%;
-}
-
-.card-text::-webkit-scrollbar {
-    width: 6px;
-}
-
-.card-text::-webkit-scrollbar-thumb {
-    background: #f3a6b8;
-    border-radius: 10px;
-}
 
 @media (max-width: 600px) {
-    .card {
-        padding: 20px;
-        min-height: 260px;
-    }
-
-    .card-text {
-        font-size: 18px;
-        max-height: 65vh;
-    }
+    .card { width: 80vw; min-height: 260px; padding: 20px; }
+    .heart { width: 70px; height: 70px; }
+    .heart::before, .heart::after { width: 70px; height: 70px; }
+    .heart::before { top: -35px; }
+    .heart::after { left: 35px; }
+    .card-text p { font-size: 1.5em; }
 }
-
-
-
