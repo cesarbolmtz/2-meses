@@ -1,25 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const card = document.querySelector('.card');
     const heart = document.querySelector('.heart');
     const cardText = document.querySelector('.card-text');
     const openBtn = document.querySelector('.open-btn');
+    const cardTitle = document.querySelector('.card-title');
 
-    openBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // evita clicks accidentales
-
-        // Romper corazón
+    openBtn.addEventListener('click', () => {
         heart.classList.add('broken');
 
-        // Mostrar texto
+        cardTitle.style.display = 'none'; // 👈 OCULTA “2 Meses C & S”
         cardText.style.display = 'block';
-
-        // Ocultar botón
         openBtn.style.display = 'none';
 
-        // Evitar más acciones
-        card.style.cursor = 'default';
-
-        // Scroll suave al texto
         cardText.scrollIntoView({ behavior: 'smooth' });
     });
 });
