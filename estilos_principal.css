@@ -138,16 +138,26 @@ body {
     transform: scale(0.95);
 }
 
-/* TÍTULO INICIAL */
+/* TÍTULO INICIAL (ESTILO IMAGEN) */
 .card-title {
     margin-top: 20px;
     margin-bottom: 18px;
     text-align: center;
-
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-size: 22px;
-    font-weight: normal;
-    color: #ff4d6d;
-    letter-spacing: 1px;
-    line-height: 1.4;
 }
+
+.card-title h1,
+.card-title h2 {
+    font-family: 'Pacifico', cursive;
+    font-weight: normal;
+    color: #000;
+}
+
+.card-title h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.card-title h2 {
+    font-size: 24px;
+}
+
