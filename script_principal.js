@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mostrar texto
         cardText.style.display = 'block';
 
-        // Mostrar botón continuar
-        document.querySelector('.continue-container').style.display = 'block';
-
         // Deshabilitar clics adicionales
         card.style.cursor = 'default';
         card.onclick = null;
+
+        // Opcional: scroll al inicio del texto
+        cardText.scrollIntoView({behavior: 'smooth'});
     });
 });
