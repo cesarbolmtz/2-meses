@@ -2,19 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.querySelector('.card');
     const heart = document.querySelector('.heart');
     const cardText = document.querySelector('.card-text');
+    const openBtn = document.querySelector('.open-btn');
 
-    card.addEventListener('click', () => {
+    openBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // evita clicks accidentales
+
         // Romper corazón
         heart.classList.add('broken');
 
         // Mostrar texto
         cardText.style.display = 'block';
 
-        // Deshabilitar clics adicionales
-        card.style.cursor = 'default';
-        card.onclick = null;
+        // Ocultar botón
+        openBtn.style.display = 'none';
 
-        // Opcional: scroll al inicio del texto
-        cardText.scrollIntoView({behavior: 'smooth'});
+        // Evitar más acciones
+        card.style.cursor = 'default';
+
+        // Scroll suave al texto
+        cardText.scrollIntoView({ behavior: 'smooth' });
     });
 });
