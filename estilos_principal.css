@@ -137,3 +137,21 @@ body {
 .open-btn:active {
     transform: scale(0.95);
 }
+
+/* TÍTULO INICIAL */
+.card-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-title h1 {
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.card-title h2 {
+    font-size: 26px;
+    font-weight: normal;
+}
