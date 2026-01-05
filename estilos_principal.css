@@ -110,3 +110,27 @@ body {
         font-size: 20px;
     }
 }
+
+/* BOTÓN ABRIR */
+.open-btn {
+    margin-top: 40px;
+    padding: 10px 28px;
+    font-size: 18px;
+    font-family: 'Annie Use Your Telescope', cursive;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.open-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.open-btn:active {
+    transform: scale(0.95);
+}
