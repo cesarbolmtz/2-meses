@@ -138,10 +138,10 @@ body {
     transform: scale(0.95);
 }
 
-/* TÍTULO INICIAL (ESTILO IMAGEN) */
+/* TÍTULO INICIAL (AJUSTADO COMO LA IMAGEN) */
 .card-title {
     margin-top: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     text-align: center;
 }
 
@@ -150,14 +150,17 @@ body {
     font-family: 'Pacifico', cursive;
     font-weight: normal;
     color: #000;
+    line-height: 1.1; /* 👈 clave para que queden juntos */
 }
 
 .card-title h1 {
     font-size: 30px;
-    margin-bottom: 6px;
+    margin-bottom: 0; /* 👈 elimina separación */
 }
 
 .card-title h2 {
     font-size: 24px;
+    margin-top: -4px; /* 👈 acerca aún más */
 }
+
 
