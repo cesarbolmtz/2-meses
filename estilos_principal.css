@@ -1,107 +1,112 @@
-/* RESET BÁSICO */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* FONDO GENERAL */
+/* BODY */
 body {
-    min-height: 100vh;
+    min-height: 100dvh; /* clave para iOS */
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Annie Use Your Telescope', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR */
+.card-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 /* CARTA */
 .card {
     position: relative;
-    width: 320px;
-    background: #fff;
-    border-radius: 15px;
-    padding: 120px 25px 30px; /* espacio arriba para el corazón */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 150px 25px 35px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    overflow: visible; /* evita que el texto se corte */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 /* CORAZÓN */
 .heart {
     position: absolute;
-    top: -50px;
-    width: 80px;
-    height: 80px;
-    background: red;
-    transform: rotate(-45deg);
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    width: 90px;
+    height: 90px;
+    background: #ff0000;
 }
 
 .heart::before,
 .heart::after {
     content: "";
     position: absolute;
-    width: 80px;
-    height: 80px;
-    background: red;
+    width: 90px;
+    height: 90px;
+    background: #ff0000;
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -40px;
+    top: -45px;
     left: 0;
 }
 
 .heart::after {
-    left: 40px;
+    left: 45px;
     top: 0;
 }
 
 /* TEXTO */
 .card-text {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-}
-
-/* TÍTULO (SI LO TIENES) */
-.card-text h1 {
     font-size: 22px;
-    margin-bottom: 15px;
-    color: #e63946;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
 }
 
 /* PÁRRAFOS */
 .card-text p {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 400px) {
+/* MÓVILES PEQUEÑOS */
+@media (max-width: 360px) {
     .card {
-        width: 90%;
-        padding: 110px 20px 25px;
+        padding: 135px 20px 30px;
     }
 
     .heart {
-        width: 65px;
-        height: 65px;
+        width: 75px;
+        height: 75px;
+        top: -50px;
     }
 
     .heart::before,
     .heart::after {
-        width: 65px;
-        height: 65px;
+        width: 75px;
+        height: 75px;
     }
 
     .heart::before {
-        top: -32px;
+        top: -38px;
     }
 
     .heart::after {
-        left: 32px;
+        left: 38px;
+    }
+
+    .card-text {
+        font-size: 20px;
     }
 }
